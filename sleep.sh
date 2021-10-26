@@ -2,4 +2,7 @@
 set -x
 set +e
 
+echo "hello from root script.sh"
 sleep ${SLEEP_IN_SECONDS:-3}
+
+ls $ENV0_TEMPLATE_DIR
