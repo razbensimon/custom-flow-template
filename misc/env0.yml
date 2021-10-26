@@ -4,5 +4,4 @@ deploy:
   steps:
     setupVariables:
       after:
-        - chmod +x validate.sh
-        - ./validate.sh
+        - echo "hello from misc"

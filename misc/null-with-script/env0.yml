@@ -1,0 +1,9 @@
+version: 1
+
+deploy:
+  steps:
+    setupVariables:
+      after:
+        - echo "hello from null-with-script"
+        - chmod +x ./sleep.sh
+        - ./sleep.sh

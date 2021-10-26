@@ -1,0 +1,9 @@
+version: 1
+
+deploy:
+  steps:
+    setupVariables:
+      after:
+        - echo "hello from root env0.yml"
+        - chmod +x ./sleep.sh
+        - ./sleep.sh
