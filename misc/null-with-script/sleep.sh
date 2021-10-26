@@ -2,4 +2,6 @@
 set -x
 set +e
 
-sleep ${SLEEP_IN_SECONDS:-3}
+echo "hello from null-with-script script.sh"
+sleep ${SLEEP_IN_SECONDS:-1}
+$ENV0_ROOT_DIR/sleep.sh
