@@ -1,0 +1,7 @@
+version: 1
+
+deploy:
+  steps:
+    setupVariables:
+      after:
+        - echo "hello from env0.yaml file"
