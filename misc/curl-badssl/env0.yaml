@@ -1,0 +1,10 @@
+version: 1
+
+deploy:
+  steps:
+    setupVariables:
+      after:
+        - ls -a /env0-custom-certificates
+        - ls -a /usr/local/share/ca-certificates/
+        - echo "Executing a curl command to badssl (needs a specific self-signed certificated to work)"
+        - curl https://self-signed.badssl.com/
