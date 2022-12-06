@@ -3,20 +3,24 @@ const https = require('node:https');
 function execute(url) {
     console.log('GET from JS code:', url);
 
-    https
-        .get(url, res => {
-            console.log('statusCode:', res.statusCode);
-            console.log('headers:', res.headers);
+    return new Promise((res, rej) => {
+        https
+            .get(url, res => {
+                console.log('statusCode:', res.statusCode);
+                console.log('headers:', res.headers);
 
-            res.on('data', data => {
-                process.stdout.write(data);
+                res.on('data', data => {
+                    process.stdout.write(data);
+                    res(data);
+                });
+            })
+            .on('error', err => {
+                console.error(err);
+                rej(err);
             });
-        })
-        .on('error', e => {
-            console.error(e);
-            process.exit(1);
-        });
+    });
 }
 
-execute('https://self-signed.badssl.com/');
-execute('https://untrusted-root.badssl.com/');
+execute('https://self-signed.badssl.com/').then(() => {
+    return execute('https://untrusted-root.badssl.com/');
+}).catch(() => { process.exit(1); });
