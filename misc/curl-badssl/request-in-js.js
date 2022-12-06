@@ -3,20 +3,20 @@ const https = require('node:https');
 function execute(url) {
     console.log('GET from JS code:', url);
 
-    return new Promise((res, rej) => {
+    return new Promise((resolve, reject) => {
         https
-            .get(url, res => {
-                console.log('statusCode:', res.statusCode);
-                console.log('headers:', res.headers);
+            .get(url, response => {
+                console.log('statusCode:', response.statusCode);
+                console.log('headers:', response.headers);
 
-                res.on('data', data => {
+                response.on('data', data => {
                     process.stdout.write(data);
-                    res(data);
+                    resolve(data);
                 });
             })
             .on('error', err => {
                 console.error(err);
-                rej(err);
+                reject(err);
             });
     });
 }
