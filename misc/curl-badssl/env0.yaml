@@ -10,3 +10,4 @@ deploy:
         - echo "Executing a curl command to badssl (needs a specific self-signed certificated to work)"
         - curl https://self-signed.badssl.com/
         - curl https://untrusted-root.badssl.com/
+        - node ./request-in-js.js
