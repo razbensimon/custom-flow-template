@@ -3,7 +3,7 @@ deploy:
   steps:
     terraformInit:
       before:
-        - echo TF_FORCE_LOCAL_BACKEND=1 >> $ENV0_ENV
+        - echo TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND
         - terraform -chdir='./loacl-tf-run' init
         - terraform -chdir='./loacl-tf-run' plan
         - terraform -chdir='./loacl-tf-run' apply -auto-approve        
