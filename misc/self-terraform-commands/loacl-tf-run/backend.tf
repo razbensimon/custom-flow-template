@@ -6,7 +6,7 @@ terraform {
     organization = "${data.env_variable.env0_proj_id.value}.${data.env_variable.env0_proj_id.value}"
 
     workspaces {
-      name = "my-test-env-1"
+      name = "testing-self-tf-commands-1"
     }
   }
 }
