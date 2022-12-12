@@ -1,8 +1,8 @@
 version: 1
 deploy:
   steps:
-    setupVariables:
-      after:
+    terraformInit:
+      before:
         - echo TF_FORCE_LOCAL_BACKEND=1 >> $ENV0_ENV
         - terraform -chdir='./loacl-tf-run' init
         - terraform -chdir='./loacl-tf-run' plan
