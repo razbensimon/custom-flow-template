@@ -3,6 +3,10 @@ deploy:
   steps:
     terraformInit:
       before:
+        - pwd
+        - ls -a
+        - cat .terraformrc
+        - cp .terraformrc ./loacl-tf-run
         - echo TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND
         - terraform -chdir='./loacl-tf-run' login backend.api.env0.com
         - terraform -chdir='./loacl-tf-run' init
