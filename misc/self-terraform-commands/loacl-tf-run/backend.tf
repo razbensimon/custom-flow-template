@@ -7,4 +7,16 @@ terraform {
       name = "testing-self-tf-commands-1-controlled"
     }
   }
+
+  required_providers {
+    env = {
+      source = "tchupp/env"
+      version = "0.0.2"
+    }
+  }
+}
+
+
+provider "env" {
+  # Configuration options
 }
