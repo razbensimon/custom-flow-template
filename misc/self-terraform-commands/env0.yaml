@@ -3,12 +3,12 @@ deploy:
   steps:
     terraformInit:
       before:
-        - name: Some echos
+        - name: TF_FORCE_LOCAL_BACKEND is...
           run: echo TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND        
         - name: local-cli terraform init
-          run: terraform -chdir='./loacl-tf-run' init
+          run: TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND terraform -chdir='./loacl-tf-run' init
         - name: local-cli terraform 
-          run: terraform -chdir='./loacl-tf-run' plan
+          run: TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND terraform -chdir='./loacl-tf-run' plan
         - name: local-cli terraform apply
-          run: terraform -chdir='./loacl-tf-run' apply -auto-approve
+          run: TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND terraform -chdir='./loacl-tf-run' apply -auto-approve
       
