@@ -15,7 +15,7 @@ deploy:
           run: echo TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND        
         - name: local-cli terraform init
           run: TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND terraform -chdir='./loacl-tf-run' init
-        - name: local-cli terraform 
+        - name: local-cli terraform plan
           run: TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND terraform -chdir='./loacl-tf-run' plan
         - name: local-cli terraform apply
           run: TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND terraform -chdir='./loacl-tf-run' apply -auto-approve
