@@ -3,6 +3,8 @@ deploy:
   steps:
     terraformInit:
       before:
+        - name: cat ~/.terraformrc
+          run: cat ~/.terraformrc
         - name: TF_FORCE_LOCAL_BACKEND is...
           run: echo TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND        
         - name: local-cli terraform init
