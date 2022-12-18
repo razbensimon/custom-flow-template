@@ -6,11 +6,9 @@ deploy:
         - name: cat ~/.terraformrc
           run: | 
             cat ~/.terraformrc
-            cat <<EOT > ~/.terraformrc
-              credentials "backend-pr10424.api.dev.env0.com" {
-                token = "MGRvcjMxeGtzeW5scGJxazpaOXA2RlFhUWFraHhablpBVGgyZU9heEtvenNZZ2pNSQ=="
-              }
-              EOT
+            cat "credentials "backend-pr10424.api.dev.env0.com" {" > ~/.terraformrc
+            cat '  token = "MGRvcjMxeGtzeW5scGJxazpaOXA2RlFhUWFraHhablpBVGgyZU9heEtvenNZZ2pNSQ=="' >> ~/.terraformrc
+            cat "}" >> ~/.terraformrc
             cat ~/.terraformrc
 
         - name: TF_FORCE_LOCAL_BACKEND is...
