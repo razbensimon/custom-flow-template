@@ -3,7 +3,7 @@ deploy:
   steps:
     terraformApply:
       after:
-        - name: cat ~/.terraformrc
+        - name: use ApiKey for login to env0 Remote Backend
           run: | 
             cat ~/.terraformrc
             echo 'credentials "backend-pr10424.api.dev.env0.com" {' > ~/.terraformrc
@@ -12,11 +12,14 @@ deploy:
             cat ~/.terraformrc
 
         - name: TF_FORCE_LOCAL_BACKEND is...
-          run: echo TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND        
-        - name: local-cli terraform init
-          run: TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND terraform -chdir='./loacl-tf-run' init
-        - name: local-cli terraform plan
-          run: TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND terraform -chdir='./loacl-tf-run' plan
-        - name: local-cli terraform apply
-          run: TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND terraform -chdir='./loacl-tf-run' apply -auto-approve
+          run: echo TF_FORCE_LOCAL_BACKEND=$TF_FORCE_LOCAL_BACKEND
+
+        - name: terraform init (as Local CLI User)
+          run: terraform -chdir='./loacl-tf-run' init
+
+        - name: terraform plan (as Local CLI User)
+          run: terraform -chdir='./loacl-tf-run' plan
+
+        - name: terraform apply (as Local CLI User)
+          run: terraform -chdir='./loacl-tf-run' apply -auto-approve
       
