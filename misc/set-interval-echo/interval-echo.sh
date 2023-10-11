@@ -12,10 +12,15 @@ interval=$1
 max_interval=$2
 message=$3
 
+start_time=$(date +%s)
+stop_time=$((start_time + max_interval))
+
 while true; do
-    echo "$(date +'%Y-%m-%d %H:%M:%S') $message"
-    sleep $interval
-    if [ $interval -ge $max_interval ]; then
+    current_time=$(date +%s)
+    if [ $current_time -ge $stop_time ]; then
         break
     fi
+
+    echo "$(date +'%Y-%m-%d %H:%M:%S') $message"
+    sleep $interval    
 done
