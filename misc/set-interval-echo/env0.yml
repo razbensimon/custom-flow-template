@@ -1,0 +1,9 @@
+version: 1
+
+deploy:
+  steps:
+    setupVariables:
+      after:
+        - echo "Starting script..."
+        - chmod +x ./interval-echo.sh
+        - ./interval-echo.sh
