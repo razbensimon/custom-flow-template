@@ -6,4 +6,4 @@ deploy:
       after:
         - echo "Starting script..."
         - chmod +x ./interval-echo.sh
-        - ./interval-echo.sh
+        - ./interval-echo.sh 1 30 "Hello"
